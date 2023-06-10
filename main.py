@@ -13,6 +13,7 @@ FEED_URL = os.getenv('FEED_URL')
 WATCH_INTERVAL = int(os.getenv('WATCH_INTERVAL', '3600'))
 CAPTURE_DIR = os.getenv('CAPTURE_DIR', '.')
 DEBUG = bool(os.getenv('DEBUG'))
+CHROMEDRIVER_PATH = os.getenv('CHROMEDRIVER_PATH')
 
 logging.basicConfig(level=logging.DEBUG if DEBUG else logging.INFO)
 
@@ -31,6 +32,8 @@ def watch_feed(kept_ids: typing.Set[str]) -> typing.Set[str]:
     logging.info(f'Deleted: {len(to_del_ids)} items')
 
     tweet = TweetCapture(mode=2, night_mode=0)
+    if CHROMEDRIVER_PATH:
+        tweet.set_chromedriver_path(CHROMEDRIVER_PATH)
 
     async def task():
         # Can only run one by one otherwise the driver disconnects
