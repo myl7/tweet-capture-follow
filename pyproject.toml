@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "tweet-capture-follow"
+version = "0.1.0"
+description = ""
+authors = ["myl7 <myl@myl.moe>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{ include = "tweet_capture_follow" }]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+feedparser = "^6.0.10"
+tweet-capture = "^0.1.9"
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.0.2"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
